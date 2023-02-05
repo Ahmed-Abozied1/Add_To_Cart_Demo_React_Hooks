@@ -35,3 +35,16 @@ z-index: 1000;
 .links ul li a:hover{
     color: #4d5051;
 }
+.badge {
+    padding-left: 9px;
+    padding-right: 9px;
+    border-radius: 9px;
+    font-size: 12px;
+    background: #0D6EFD;
+    color: #fff;
+    padding: 0 5px;
+    vertical-align: top;
+    margin-left: -2px; 
+  }
+  
+ 
