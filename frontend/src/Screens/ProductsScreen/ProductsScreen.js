@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from "./ProductsScreen.module.css";
 import ProductCard from '../../components/ProductCard/ProductCard';
-function ProductsScreen({AddToCart,products}) {
+import { ShoppingContext } from '../../components/context/ShoppingContext';
+function ProductsScreen() {
+  const {products}=useContext(ShoppingContext);
   return (
-
+ 
     <div className={styles.products}>
 {products.map((product)=>(
-  <ProductCard key={product.id} product={product} 
-  AddToCart={AddToCart}/>
+  <ProductCard key={product.id} products={products} product={product}/>
 ))}
     </div>
   )

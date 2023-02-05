@@ -1,10 +1,8 @@
+import { useContext } from "react";
+import { ShoppingContext } from "../../components/context/ShoppingContext";
 
-function CartScreen({
-  cartItems,
-  increaseQuantity,
-  decreaseQuantity,
-  deleteItem,
-}) {
+function CartScreen() {
+  const {cartItems,increaseQuantity,decreaseQuantity,deleteItem}=useContext(ShoppingContext);
 
   return (
     <div className="row my-4">

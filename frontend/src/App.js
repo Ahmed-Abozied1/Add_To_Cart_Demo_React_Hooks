@@ -4,9 +4,10 @@ import Header from "./components/Header/Header";
 import CartScreen from "./Screens/CartScreen/CartScreen";
 import ProductsScreen from "./Screens/ProductsScreen/ProductsScreen";
 import Swal from "sweetalert2";
-import {data} from "./components/backend/data.js"
+import { data } from "./components/backend/data.js";
+import { ShoppingContext } from "./components/context/ShoppingContext";
 function App() {
-  const {products}=data
+  const { products } = data;
 
   const [cartItems, setCartItems] = useState([]);
   useEffect(() => {
@@ -59,26 +60,24 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
-      <Header cartItems={cartItems} />
-      <Routes>
-        <Route
-          path="/"
-          element={<ProductsScreen products={products} AddToCart={AddToCart} />}
-        ></Route>
-        <Route
-          path="/cart"
-          element={
-            <CartScreen
-              cartItems={cartItems}
-              increaseQuantity={increaseQuantity}
-              decreaseQuantity={decreaseQuantity}
-              deleteItem={deleteItem}
-            />
-          }
-        ></Route>
-      </Routes>
-    </BrowserRouter>
+    <ShoppingContext.Provider
+      value={{
+        products,
+        AddToCart,
+        increaseQuantity,
+        decreaseQuantity,
+        deleteItem,
+        cartItems,
+      }}
+    >
+      <BrowserRouter>
+        <Header cartItems={cartItems} />
+        <Routes>
+          <Route path="/" element={<ProductsScreen />}></Route>
+          <Route path="/cart" element={<CartScreen />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </ShoppingContext.Provider>
   );
 }
 

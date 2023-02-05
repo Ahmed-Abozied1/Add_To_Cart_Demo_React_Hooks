@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ShoppingContext } from "../context/ShoppingContext";
 import styles from "./Header.module.css";
-function Header({cartItems}) {
+function Header() {
+  const {cartItems}=useContext(ShoppingContext);
+
   return (
     <header className={styles.header}>
       <div>
